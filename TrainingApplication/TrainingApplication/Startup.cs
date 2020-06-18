@@ -53,6 +53,8 @@ namespace TrainingApplication
             {
                 var role = new IdentityRole("TrainingStaff");
                 roleManager.Create(role);
+
+
             }
 
             if (!roleManager.RoleExists("Trainee"))

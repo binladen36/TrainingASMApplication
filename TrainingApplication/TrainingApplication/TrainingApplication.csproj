@@ -172,7 +172,7 @@
     <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Controllers\TrainingStaffActionController.cs" />
     <Compile Include="Controllers\TrainingStaffsController.cs" />
-    <Compile Include="Controllers\TrainningManagingsController.cs" />
+    <Compile Include="Controllers\TrainingManagingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -300,11 +300,11 @@
     <Content Include="Views\Topics\Details.cshtml" />
     <Content Include="Views\Topics\Edit.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
-    <Content Include="Views\TrainningManagings\Create.cshtml" />
-    <Content Include="Views\TrainningManagings\Delete.cshtml" />
-    <Content Include="Views\TrainningManagings\Details.cshtml" />
-    <Content Include="Views\TrainningManagings\Edit.cshtml" />
-    <Content Include="Views\TrainningManagings\Index.cshtml" />
+    <Content Include="Views\TrainingManagings\Create.cshtml" />
+    <Content Include="Views\TrainingManagings\Delete.cshtml" />
+    <Content Include="Views\TrainingManagings\Details.cshtml" />
+    <Content Include="Views\TrainingManagings\Edit.cshtml" />
+    <Content Include="Views\TrainingManagings\Index.cshtml" />
     <Content Include="Views\Authen\Register.cshtml" />
     <Content Include="Views\Authen\Login.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />

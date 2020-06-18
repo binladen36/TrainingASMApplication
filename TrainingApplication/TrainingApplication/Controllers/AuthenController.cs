@@ -42,6 +42,7 @@ namespace TrainingApplication.Controllers
                     if (!result.Succeeded)
                     {
                         ModelState.AddModelError("", "Error Adding new User " + result.Errors.First());
+                        manager.AddToRole(user.Id, acc.UserRoles);
                     }
                 }
                 else
