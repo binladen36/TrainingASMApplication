@@ -1,0 +1,35 @@
+﻿@model TrainingApplication.Models.CourseCate
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CourseCate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseCateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseCateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseCateDes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseCateDes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseCateID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

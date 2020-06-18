@@ -1,0 +1,99 @@
+﻿@model TrainingApplication.Models.Trainee
+
+@{
+    ViewBag.Title = "TraineeProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TraineeProfile</h2>
+
+<div>
+    <h4>Trainee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeUserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeAccount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MPL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MPL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOEIC_score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOEIC_score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TraineeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

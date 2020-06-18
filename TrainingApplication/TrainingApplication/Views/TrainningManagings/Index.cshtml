@@ -1,0 +1,78 @@
+﻿@model PagedList.IPagedList<TrainingApplication.Models.TrainningManaging>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("CourseName", "Index", new { sortOrder = ViewBag.CourseNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("CourseCateName", "Index", new { sortOrder = ViewBag.CourseCateNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("TopicName", "Index", new { sortOrder = ViewBag.TopicNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("TraineeUserID", "Index", new { sortOrder = ViewBag.TraineeUserIDSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("TrainerUserID", "Index", new { sortOrder = ViewBag.TrainerUserIDSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("TrainingStaffUserID", "Index", new { sortOrder = ViewBag.TrainingStaffUserIDSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseCate.CourseCateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Topic.TopicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainee.TraineeUserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trainer.TrainerUserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingStaff.TrainingStaffUserID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TrainingManagingID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TrainingManagingID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TrainingManagingID })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
