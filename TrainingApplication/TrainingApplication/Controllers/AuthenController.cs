@@ -19,40 +19,6 @@ namespace TrainingApplication.Controllers
             return View();
         }
 
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(Account acc)
-        {
-            if (ModelState.IsValid)
-            {
-                if (acc.Password.Equals(acc.ConfirmPassword))
-                {
-                    var userStore = new UserStore<IdentityUser>();
-                    var manager = new UserManager<IdentityUser>(userStore);
-
-                    var user = new IdentityUser() { UserName = acc.UserName };
-                    IdentityResult result = manager.Create(user, acc.Password);
-
-                    if (!result.Succeeded)
-                    {
-                        ModelState.AddModelError("", "Error Adding new User " + result.Errors.First());
-                        manager.AddToRole(user.Id, acc.UserRoles);
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Confirm Password not match");
-                }
-            }
-            return View(acc);
-        }
-
         public ActionResult Login()
         {
             return View();
@@ -74,7 +40,7 @@ namespace TrainingApplication.Controllers
                 var userIdentity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
 
                 authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = false }, userIdentity);
-                return RedirectToAction("Index", "Trainers");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

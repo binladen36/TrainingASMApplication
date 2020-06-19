@@ -164,15 +164,17 @@
     <Compile Include="Controllers\AuthenController.cs" />
     <Compile Include="Controllers\CourseCatesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\Course_CourseCateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\TraineeActionController.cs" />
     <Compile Include="Controllers\TraineesController.cs" />
+    <Compile Include="Controllers\Trainee_CourseController.cs" />
     <Compile Include="Controllers\TrainerActionController.cs" />
     <Compile Include="Controllers\TrainersController.cs" />
+    <Compile Include="Controllers\Trainer_Course_TopicController.cs" />
     <Compile Include="Controllers\TrainingStaffActionController.cs" />
     <Compile Include="Controllers\TrainingStaffsController.cs" />
-    <Compile Include="Controllers\TrainingManagingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,13 +185,22 @@
     <Compile Include="Models\CourseCate.cs">
       <DependentUpon>TrainingDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Course_CourseCate.cs">
+      <DependentUpon>TrainingDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Topic.cs">
       <DependentUpon>TrainingDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Trainee.cs">
       <DependentUpon>TrainingDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Trainee_Course.cs">
+      <DependentUpon>TrainingDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Trainer.cs">
+      <DependentUpon>TrainingDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trainer_Course_Topic.cs">
       <DependentUpon>TrainingDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TrainingDB.Context.cs">
@@ -210,7 +221,7 @@
     <Compile Include="Models\TrainingStaff.cs">
       <DependentUpon>TrainingDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrainningManaging.cs">
+    <Compile Include="Models\TrainingStaff_Trainee.cs">
       <DependentUpon>TrainingDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -300,12 +311,6 @@
     <Content Include="Views\Topics\Details.cshtml" />
     <Content Include="Views\Topics\Edit.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
-    <Content Include="Views\TrainingManagings\Create.cshtml" />
-    <Content Include="Views\TrainingManagings\Delete.cshtml" />
-    <Content Include="Views\TrainingManagings\Details.cshtml" />
-    <Content Include="Views\TrainingManagings\Edit.cshtml" />
-    <Content Include="Views\TrainingManagings\Index.cshtml" />
-    <Content Include="Views\Authen\Register.cshtml" />
     <Content Include="Views\Authen\Login.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Shared\_AdminMenu.cshtml" />
@@ -313,10 +318,27 @@
     <Content Include="Views\Shared\_TrainingStaffMenu.cshtml" />
     <Content Include="Views\Shared\_TrainerMenu.cshtml" />
     <Content Include="Views\TrainerAction\TrainerProfile.cshtml" />
-    <Content Include="Views\TrainerAction\TrainerCourse.cshtml" />
-    <Content Include="Views\TrainerAction\TrainerTopic.cshtml" />
     <Content Include="Views\TrainingStaffAction\TrainingStaffProfile.cshtml" />
+    <Content Include="Views\TraineeAction\Edit.cshtml" />
     <Content Include="Views\TraineeAction\TraineeProfile.cshtml" />
+    <Content Include="Views\Course_CourseCate\Create.cshtml" />
+    <Content Include="Views\Course_CourseCate\Delete.cshtml" />
+    <Content Include="Views\Course_CourseCate\Details.cshtml" />
+    <Content Include="Views\Course_CourseCate\Edit.cshtml" />
+    <Content Include="Views\Course_CourseCate\Index.cshtml" />
+    <Content Include="Views\Trainee_Course\Create.cshtml" />
+    <Content Include="Views\Trainee_Course\Delete.cshtml" />
+    <Content Include="Views\Trainee_Course\Details.cshtml" />
+    <Content Include="Views\Trainee_Course\Edit.cshtml" />
+    <Content Include="Views\Trainee_Course\Index.cshtml" />
+    <Content Include="Views\Trainer_Course_Topic\Create.cshtml" />
+    <Content Include="Views\Trainer_Course_Topic\Delete.cshtml" />
+    <Content Include="Views\Trainer_Course_Topic\Details.cshtml" />
+    <Content Include="Views\Trainer_Course_Topic\Edit.cshtml" />
+    <Content Include="Views\Trainer_Course_Topic\Index.cshtml" />
+    <Content Include="Views\TrainerAction\TrainerCourseTopic.cshtml" />
+    <Content Include="Views\TrainerAction\Edit.cshtml" />
+    <Content Include="Views\Shared\_Manage.cshtml" />
     <Content Include="Views\TraineeAction\TraineeCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>

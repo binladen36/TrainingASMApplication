@@ -8,7 +8,19 @@
     <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CourseDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Credit" Type="Int32" />
-    <NavigationProperty Name="TrainningManagings" Relationship="Self.FK__Trainning__Cours__6C190EBB" FromRole="Course" ToRole="TrainningManaging" />
+    <NavigationProperty Name="Course_CourseCate" Relationship="Self.FK__Course_Co__Cours__6D0D32F4" FromRole="Course" ToRole="Course_CourseCate" />
+    <NavigationProperty Name="Trainee_Course" Relationship="Self.FK__Trainee_C__Cours__6A30C649" FromRole="Course" ToRole="Trainee_Course" />
+    <NavigationProperty Name="Trainer_Course_Topic" Relationship="Self.FK__Trainer_C__Cours__71D1E811" FromRole="Course" ToRole="Trainer_Course_Topic" />
+  </EntityType>
+  <EntityType Name="Course_CourseCate">
+    <Key>
+      <PropertyRef Name="CourseCourseCateID" />
+    </Key>
+    <Property Name="CourseCourseCateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="CourseCateID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Course_Co__Cours__6D0D32F4" FromRole="Course_CourseCate" ToRole="Course" />
+    <NavigationProperty Name="CourseCate" Relationship="Self.FK__Course_Co__Cours__6E01572D" FromRole="Course_CourseCate" ToRole="CourseCate" />
   </EntityType>
   <EntityType Name="CourseCate">
     <Key>
@@ -17,7 +29,7 @@
     <Property Name="CourseCateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CourseCateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CourseCateDes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TrainningManagings" Relationship="Self.FK__Trainning__Cours__6B24EA82" FromRole="CourseCate" ToRole="TrainningManaging" />
+    <NavigationProperty Name="Course_CourseCate" Relationship="Self.FK__Course_Co__Cours__6E01572D" FromRole="CourseCate" ToRole="Course_CourseCate" />
   </EntityType>
   <EntityType Name="Topic">
     <Key>
@@ -26,7 +38,7 @@
     <Property Name="TopicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TopicName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TopicDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TrainningManagings" Relationship="Self.FK__Trainning__Topic__6D0D32F4" FromRole="Topic" ToRole="TrainningManaging" />
+    <NavigationProperty Name="Trainer_Course_Topic" Relationship="Self.FK__Trainer_C__Topic__72C60C4A" FromRole="Topic" ToRole="Trainer_Course_Topic" />
   </EntityType>
   <EntityType Name="Trainee">
     <Key>
@@ -43,7 +55,18 @@
     <Property Name="ExDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TrainningManagings" Relationship="Self.FK__Trainning__Train__6A30C649" FromRole="Trainee" ToRole="TrainningManaging" />
+    <NavigationProperty Name="Trainee_Course" Relationship="Self.FK__Trainee_C__Train__693CA210" FromRole="Trainee" ToRole="Trainee_Course" />
+    <NavigationProperty Name="TrainingStaff_Trainee" Relationship="Self.FK__TrainingS__Train__76969D2E" FromRole="Trainee" ToRole="TrainingStaff_Trainee" />
+  </EntityType>
+  <EntityType Name="Trainee_Course">
+    <Key>
+      <PropertyRef Name="TraineeCourseID" />
+    </Key>
+    <Property Name="TraineeCourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TraineeID" Type="Int32" />
+    <Property Name="CourseID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Trainee_C__Cours__6A30C649" FromRole="Trainee_Course" ToRole="Course" />
+    <NavigationProperty Name="Trainee" Relationship="Self.FK__Trainee_C__Train__693CA210" FromRole="Trainee_Course" ToRole="Trainee" />
   </EntityType>
   <EntityType Name="Trainer">
     <Key>
@@ -52,13 +75,24 @@
     <Property Name="TrainerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TrainerUserID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TrainerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="External" Type="Boolean" />
     <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="WorkingPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Telephone" Type="Int32" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TrainningManagings" Relationship="Self.FK__Trainning__Train__6E01572D" FromRole="Trainer" ToRole="TrainningManaging" />
-    <Property Name="External" Type="Boolean" />
-    <Property Name="Internal" Type="Boolean" />
+    <NavigationProperty Name="Trainer_Course_Topic" Relationship="Self.FK__Trainer_C__Train__70DDC3D8" FromRole="Trainer" ToRole="Trainer_Course_Topic" />
+  </EntityType>
+  <EntityType Name="Trainer_Course_Topic">
+    <Key>
+      <PropertyRef Name="TrainerCourseTopicID" />
+    </Key>
+    <Property Name="TrainerCourseTopicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TrainerID" Type="Int32" />
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="TopicID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Trainer_C__Cours__71D1E811" FromRole="Trainer_Course_Topic" ToRole="Course" />
+    <NavigationProperty Name="Topic" Relationship="Self.FK__Trainer_C__Topic__72C60C4A" FromRole="Trainer_Course_Topic" ToRole="Topic" />
+    <NavigationProperty Name="Trainer" Relationship="Self.FK__Trainer_C__Train__70DDC3D8" FromRole="Trainer_Course_Topic" ToRole="Trainer" />
   </EntityType>
   <EntityType Name="TrainingStaff">
     <Key>
@@ -68,129 +102,172 @@
     <Property Name="TrainingStaffUserID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TrainingStaffName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="TrainingStaffDes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TrainningManagings" Relationship="Self.FK__Trainning__Train__693CA210" FromRole="TrainingStaff" ToRole="TrainningManaging" />
+    <NavigationProperty Name="TrainingStaff_Trainee" Relationship="Self.FK__TrainingS__Train__75A278F5" FromRole="TrainingStaff" ToRole="TrainingStaff_Trainee" />
   </EntityType>
-  <EntityType Name="TrainningManaging">
+  <EntityType Name="TrainingStaff_Trainee">
     <Key>
-      <PropertyRef Name="TrainingManagingID" />
+      <PropertyRef Name="TrainingStaffTraineeID" />
     </Key>
-    <Property Name="TrainingManagingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TrainingStaffTraineeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TrainingStaffID" Type="Int32" />
     <Property Name="TraineeID" Type="Int32" />
-    <Property Name="CourseCateID" Type="Int32" />
-    <Property Name="CourseID" Type="Int32" />
-    <Property Name="TopicID" Type="Int32" />
-    <Property Name="TrainerID" Type="Int32" />
-    <NavigationProperty Name="Course" Relationship="Self.FK__Trainning__Cours__6C190EBB" FromRole="TrainningManaging" ToRole="Course" />
-    <NavigationProperty Name="CourseCate" Relationship="Self.FK__Trainning__Cours__6B24EA82" FromRole="TrainningManaging" ToRole="CourseCate" />
-    <NavigationProperty Name="Topic" Relationship="Self.FK__Trainning__Topic__6D0D32F4" FromRole="TrainningManaging" ToRole="Topic" />
-    <NavigationProperty Name="Trainee" Relationship="Self.FK__Trainning__Train__6A30C649" FromRole="TrainningManaging" ToRole="Trainee" />
-    <NavigationProperty Name="Trainer" Relationship="Self.FK__Trainning__Train__6E01572D" FromRole="TrainningManaging" ToRole="Trainer" />
-    <NavigationProperty Name="TrainingStaff" Relationship="Self.FK__Trainning__Train__693CA210" FromRole="TrainningManaging" ToRole="TrainingStaff" />
+    <NavigationProperty Name="Trainee" Relationship="Self.FK__TrainingS__Train__76969D2E" FromRole="TrainingStaff_Trainee" ToRole="Trainee" />
+    <NavigationProperty Name="TrainingStaff" Relationship="Self.FK__TrainingS__Train__75A278F5" FromRole="TrainingStaff_Trainee" ToRole="TrainingStaff" />
   </EntityType>
-  <Association Name="FK__Trainning__Cours__6C190EBB">
+  <Association Name="FK__Course_Co__Cours__6D0D32F4">
     <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
-    <End Role="TrainningManaging" Type="Self.TrainningManaging" Multiplicity="*" />
+    <End Role="Course_CourseCate" Type="Self.Course_CourseCate" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Course">
         <PropertyRef Name="CourseID" />
       </Principal>
-      <Dependent Role="TrainningManaging">
+      <Dependent Role="Course_CourseCate">
         <PropertyRef Name="CourseID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Trainning__Cours__6B24EA82">
+  <Association Name="FK__Trainee_C__Cours__6A30C649">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Trainee_Course" Type="Self.Trainee_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Trainee_Course">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trainer_C__Cours__71D1E811">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Trainer_Course_Topic" Type="Self.Trainer_Course_Topic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Trainer_Course_Topic">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Course_Co__Cours__6E01572D">
     <End Role="CourseCate" Type="Self.CourseCate" Multiplicity="0..1" />
-    <End Role="TrainningManaging" Type="Self.TrainningManaging" Multiplicity="*" />
+    <End Role="Course_CourseCate" Type="Self.Course_CourseCate" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CourseCate">
         <PropertyRef Name="CourseCateID" />
       </Principal>
-      <Dependent Role="TrainningManaging">
+      <Dependent Role="Course_CourseCate">
         <PropertyRef Name="CourseCateID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Trainning__Topic__6D0D32F4">
+  <Association Name="FK__Trainer_C__Topic__72C60C4A">
     <End Role="Topic" Type="Self.Topic" Multiplicity="0..1" />
-    <End Role="TrainningManaging" Type="Self.TrainningManaging" Multiplicity="*" />
+    <End Role="Trainer_Course_Topic" Type="Self.Trainer_Course_Topic" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Topic">
         <PropertyRef Name="TopicID" />
       </Principal>
-      <Dependent Role="TrainningManaging">
+      <Dependent Role="Trainer_Course_Topic">
         <PropertyRef Name="TopicID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Trainning__Train__6A30C649">
+  <Association Name="FK__Trainee_C__Train__693CA210">
     <End Role="Trainee" Type="Self.Trainee" Multiplicity="0..1" />
-    <End Role="TrainningManaging" Type="Self.TrainningManaging" Multiplicity="*" />
+    <End Role="Trainee_Course" Type="Self.Trainee_Course" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Trainee">
         <PropertyRef Name="TraineeID" />
       </Principal>
-      <Dependent Role="TrainningManaging">
+      <Dependent Role="Trainee_Course">
         <PropertyRef Name="TraineeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Trainning__Train__6E01572D">
+  <Association Name="FK__TrainingS__Train__76969D2E">
+    <End Role="Trainee" Type="Self.Trainee" Multiplicity="0..1" />
+    <End Role="TrainingStaff_Trainee" Type="Self.TrainingStaff_Trainee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainee">
+        <PropertyRef Name="TraineeID" />
+      </Principal>
+      <Dependent Role="TrainingStaff_Trainee">
+        <PropertyRef Name="TraineeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trainer_C__Train__70DDC3D8">
     <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
-    <End Role="TrainningManaging" Type="Self.TrainningManaging" Multiplicity="*" />
+    <End Role="Trainer_Course_Topic" Type="Self.Trainer_Course_Topic" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Trainer">
         <PropertyRef Name="TrainerID" />
       </Principal>
-      <Dependent Role="TrainningManaging">
+      <Dependent Role="Trainer_Course_Topic">
         <PropertyRef Name="TrainerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Trainning__Train__693CA210">
+  <Association Name="FK__TrainingS__Train__75A278F5">
     <End Role="TrainingStaff" Type="Self.TrainingStaff" Multiplicity="0..1" />
-    <End Role="TrainningManaging" Type="Self.TrainningManaging" Multiplicity="*" />
+    <End Role="TrainingStaff_Trainee" Type="Self.TrainingStaff_Trainee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TrainingStaff">
         <PropertyRef Name="TrainingStaffID" />
       </Principal>
-      <Dependent Role="TrainningManaging">
+      <Dependent Role="TrainingStaff_Trainee">
         <PropertyRef Name="TrainingStaffID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="TrainingDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Course_CourseCate" EntityType="Self.Course_CourseCate" />
     <EntitySet Name="CourseCates" EntityType="Self.CourseCate" />
     <EntitySet Name="Topics" EntityType="Self.Topic" />
     <EntitySet Name="Trainees" EntityType="Self.Trainee" />
+    <EntitySet Name="Trainee_Course" EntityType="Self.Trainee_Course" />
     <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+    <EntitySet Name="Trainer_Course_Topic" EntityType="Self.Trainer_Course_Topic" />
     <EntitySet Name="TrainingStaffs" EntityType="Self.TrainingStaff" />
-    <EntitySet Name="TrainningManagings" EntityType="Self.TrainningManaging" />
-    <AssociationSet Name="FK__Trainning__Cours__6C190EBB" Association="Self.FK__Trainning__Cours__6C190EBB">
+    <EntitySet Name="TrainingStaff_Trainee" EntityType="Self.TrainingStaff_Trainee" />
+    <AssociationSet Name="FK__Course_Co__Cours__6D0D32F4" Association="Self.FK__Course_Co__Cours__6D0D32F4">
       <End Role="Course" EntitySet="Courses" />
-      <End Role="TrainningManaging" EntitySet="TrainningManagings" />
+      <End Role="Course_CourseCate" EntitySet="Course_CourseCate" />
     </AssociationSet>
-    <AssociationSet Name="FK__Trainning__Cours__6B24EA82" Association="Self.FK__Trainning__Cours__6B24EA82">
+    <AssociationSet Name="FK__Trainee_C__Cours__6A30C649" Association="Self.FK__Trainee_C__Cours__6A30C649">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Trainee_Course" EntitySet="Trainee_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trainer_C__Cours__71D1E811" Association="Self.FK__Trainer_C__Cours__71D1E811">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Trainer_Course_Topic" EntitySet="Trainer_Course_Topic" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Course_Co__Cours__6E01572D" Association="Self.FK__Course_Co__Cours__6E01572D">
       <End Role="CourseCate" EntitySet="CourseCates" />
-      <End Role="TrainningManaging" EntitySet="TrainningManagings" />
+      <End Role="Course_CourseCate" EntitySet="Course_CourseCate" />
     </AssociationSet>
-    <AssociationSet Name="FK__Trainning__Topic__6D0D32F4" Association="Self.FK__Trainning__Topic__6D0D32F4">
+    <AssociationSet Name="FK__Trainer_C__Topic__72C60C4A" Association="Self.FK__Trainer_C__Topic__72C60C4A">
       <End Role="Topic" EntitySet="Topics" />
-      <End Role="TrainningManaging" EntitySet="TrainningManagings" />
+      <End Role="Trainer_Course_Topic" EntitySet="Trainer_Course_Topic" />
     </AssociationSet>
-    <AssociationSet Name="FK__Trainning__Train__6A30C649" Association="Self.FK__Trainning__Train__6A30C649">
+    <AssociationSet Name="FK__Trainee_C__Train__693CA210" Association="Self.FK__Trainee_C__Train__693CA210">
       <End Role="Trainee" EntitySet="Trainees" />
-      <End Role="TrainningManaging" EntitySet="TrainningManagings" />
+      <End Role="Trainee_Course" EntitySet="Trainee_Course" />
     </AssociationSet>
-    <AssociationSet Name="FK__Trainning__Train__6E01572D" Association="Self.FK__Trainning__Train__6E01572D">
+    <AssociationSet Name="FK__TrainingS__Train__76969D2E" Association="Self.FK__TrainingS__Train__76969D2E">
+      <End Role="Trainee" EntitySet="Trainees" />
+      <End Role="TrainingStaff_Trainee" EntitySet="TrainingStaff_Trainee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trainer_C__Train__70DDC3D8" Association="Self.FK__Trainer_C__Train__70DDC3D8">
       <End Role="Trainer" EntitySet="Trainers" />
-      <End Role="TrainningManaging" EntitySet="TrainningManagings" />
+      <End Role="Trainer_Course_Topic" EntitySet="Trainer_Course_Topic" />
     </AssociationSet>
-    <AssociationSet Name="FK__Trainning__Train__693CA210" Association="Self.FK__Trainning__Train__693CA210">
+    <AssociationSet Name="FK__TrainingS__Train__75A278F5" Association="Self.FK__TrainingS__Train__75A278F5">
       <End Role="TrainingStaff" EntitySet="TrainingStaffs" />
-      <End Role="TrainningManaging" EntitySet="TrainningManagings" />
+      <End Role="TrainingStaff_Trainee" EntitySet="TrainingStaff_Trainee" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

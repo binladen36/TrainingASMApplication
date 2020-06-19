@@ -16,7 +16,7 @@ namespace TrainingApplication.Controllers
     {
         private TrainingDBEntities db = new TrainingDBEntities();
 
-        [Authorize(Roles = "Trainee,TrainingStaff")]
+        [Authorize(Roles = "Trainee,TrainingStaff,Admin,Trainer")]
         // GET: Trainees
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -103,7 +103,7 @@ namespace TrainingApplication.Controllers
             return View(trainees.ToPagedList(pageNumber, pageSize));
         }
 
-        [Authorize(Roles = "Trainee,TrainingStaff")]
+        [Authorize(Roles = "Trainee,TrainingStaff,Admin")]
         // GET: Trainees/Details/5
         public ActionResult Details(int? id)
         {
@@ -119,7 +119,7 @@ namespace TrainingApplication.Controllers
             return View(trainee);
         }
 
-        [Authorize(Roles = "TrainingStaff")]
+        [Authorize(Roles = "TrainingStaff,Admin")]
         // GET: Trainees/Create
         public ActionResult Create()
         {
@@ -146,7 +146,7 @@ namespace TrainingApplication.Controllers
             return View(trainee);
         }
 
-        [Authorize(Roles = "Trainee,TrainingStaff")]
+        [Authorize(Roles = "Trainee,TrainingStaff,Admin")]
         // GET: Trainees/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -178,7 +178,7 @@ namespace TrainingApplication.Controllers
             return View(trainee);
         }
 
-        [Authorize(Roles = "TrainingStaff")]
+        [Authorize(Roles = "TrainingStaff,Admin")]
         // GET: Trainees/Delete/5
         public ActionResult Delete(int? id)
         {

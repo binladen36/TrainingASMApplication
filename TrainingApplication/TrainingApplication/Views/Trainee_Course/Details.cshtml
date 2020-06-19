@@ -1,0 +1,35 @@
+﻿@model TrainingApplication.Models.Trainee_Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trainee_Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainee.TraineeUserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trainee.TraineeUserID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TraineeCourseID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

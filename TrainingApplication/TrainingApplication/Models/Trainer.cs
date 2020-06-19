@@ -17,20 +17,19 @@ namespace TrainingApplication.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Trainer()
         {
-            this.TrainningManagings = new HashSet<TrainningManaging>();
+            this.Trainer_Course_Topic = new HashSet<Trainer_Course_Topic>();
         }
     
         public int TrainerID { get; set; }
         public string TrainerUserID { get; set; }
         public string TrainerName { get; set; }
+        public Nullable<bool> External { get; set; }
         public string Education { get; set; }
         public string WorkingPlace { get; set; }
         public Nullable<int> Telephone { get; set; }
         public string Email { get; set; }
-        public Nullable<bool> External { get; set; }
-        public Nullable<bool> Internal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TrainningManaging> TrainningManagings { get; set; }
+        public virtual ICollection<Trainer_Course_Topic> Trainer_Course_Topic { get; set; }
     }
 }

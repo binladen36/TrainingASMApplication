@@ -26,11 +26,14 @@ namespace TrainingApplication.Models
         }
     
         public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<Course_CourseCate> Course_CourseCate { get; set; }
         public virtual DbSet<CourseCate> CourseCates { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
         public virtual DbSet<Trainee> Trainees { get; set; }
+        public virtual DbSet<Trainee_Course> Trainee_Course { get; set; }
         public virtual DbSet<Trainer> Trainers { get; set; }
+        public virtual DbSet<Trainer_Course_Topic> Trainer_Course_Topic { get; set; }
         public virtual DbSet<TrainingStaff> TrainingStaffs { get; set; }
-        public virtual DbSet<TrainningManaging> TrainningManagings { get; set; }
+        public virtual DbSet<TrainingStaff_Trainee> TrainingStaff_Trainee { get; set; }
     }
 }

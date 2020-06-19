@@ -1,6 +1,7 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <ul class="nav navbar-right">
+        <li span style="color:whitesmoke">Welcome: @User.Identity.Name</li>
         <li>@Html.ActionLink("Logout", "Logout", "Authen")</li>
     </ul>
 

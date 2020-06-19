@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrainingApplication.Models;
@@ -26,24 +28,46 @@ namespace TrainingApplication.Controllers
             return View(trainer);
         }
 
-        public ActionResult TrainerCourse()
+        public ActionResult TrainerCourseTopic()
         {
             var userName = User.Identity.Name;
 
-            var trainningManagings = (from t in db.TrainningManagings
+            var trainer = (from t in db.Trainer_Course_Topic
                            where t.Trainer.TrainerUserID.Equals(userName)
                            select t);
-            return View(trainningManagings.ToList());
+            return View(trainer.ToList());
         }
 
-        public ActionResult TrainerTopic()
+        [Authorize(Roles = "Trainer")]
+        // GET: Trainers/Edit/5
+        public ActionResult Edit(int? id)
         {
-            var userName = User.Identity.Name;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Trainer trainer = db.Trainers.Find(id);
+            if (trainer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trainer);
+        }
 
-            var trainningManagings = (from t in db.TrainningManagings
-                                      where t.Topic.TopicID.Equals(userName)
-                                      select t);
-            return View(trainningManagings.ToList());
+        // POST: Trainers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "TrainerID,TrainerUserID,TrainerName,Education,WorkingPlace,Telephone,Email,External,Internal")] Trainer trainer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(trainer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(trainer);
         }
     }
 }

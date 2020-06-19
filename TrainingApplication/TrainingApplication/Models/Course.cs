@@ -17,7 +17,9 @@ namespace TrainingApplication.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Course()
         {
-            this.TrainningManagings = new HashSet<TrainningManaging>();
+            this.Course_CourseCate = new HashSet<Course_CourseCate>();
+            this.Trainee_Course = new HashSet<Trainee_Course>();
+            this.Trainer_Course_Topic = new HashSet<Trainer_Course_Topic>();
         }
     
         public int CourseID { get; set; }
@@ -26,6 +28,10 @@ namespace TrainingApplication.Models
         public Nullable<int> Credit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TrainningManaging> TrainningManagings { get; set; }
+        public virtual ICollection<Course_CourseCate> Course_CourseCate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Trainee_Course> Trainee_Course { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Trainer_Course_Topic> Trainer_Course_Topic { get; set; }
     }
 }

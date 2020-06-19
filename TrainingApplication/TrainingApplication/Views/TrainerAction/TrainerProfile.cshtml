@@ -67,17 +67,10 @@
             @Html.DisplayFor(model => model.External)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Internal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Internal)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TrainerID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TrainerID })|
+    @Html.ActionLink("Back", "Index", "Home")
 </p>

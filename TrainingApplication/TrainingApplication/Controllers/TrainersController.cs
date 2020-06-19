@@ -28,7 +28,7 @@ namespace TrainingApplication.Controllers
             ViewBag.TelephoneSortParm = sortOrder == "telephone_asc" ? "telephone_desc" : "telephone_asc";
             ViewBag.EmailSortParm = String.IsNullOrEmpty(sortOrder) ? "email_desc" : "";
             ViewBag.ExternalSortParm = String.IsNullOrEmpty(sortOrder) ? "external_desc" : "";
-            ViewBag.InternalSortParm = String.IsNullOrEmpty(sortOrder) ? "internal_desc" : "";
+            
 
             if (searchString != null)
             {
@@ -77,9 +77,6 @@ namespace TrainingApplication.Controllers
                     break;
                 case "external_desc":
                     trainers = trainers.OrderByDescending(t => t.External);
-                    break;
-                case "internal_desc":
-                    trainers = trainers.OrderByDescending(t => t.Internal);
                     break;
                 default:
                     trainers = trainers.OrderBy(t => t.TrainerUserID);

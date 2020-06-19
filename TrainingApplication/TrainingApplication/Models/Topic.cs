@@ -17,7 +17,7 @@ namespace TrainingApplication.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Topic()
         {
-            this.TrainningManagings = new HashSet<TrainningManaging>();
+            this.Trainer_Course_Topic = new HashSet<Trainer_Course_Topic>();
         }
     
         public int TopicID { get; set; }
@@ -25,6 +25,6 @@ namespace TrainingApplication.Models
         public string TopicDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TrainningManaging> TrainningManagings { get; set; }
+        public virtual ICollection<Trainer_Course_Topic> Trainer_Course_Topic { get; set; }
     }
 }

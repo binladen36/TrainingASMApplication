@@ -4,20 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="120ad3dbcb184f71b74194333df99043" Name="Diagram1">
-        <EntityTypeShape EntityType="TrainingDBModel.Course" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainingDBModel.CourseCate" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainingDBModel.Topic" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainingDBModel.Trainee" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainingDBModel.Trainer" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainingDBModel.TrainingStaff" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainingDBModel.TrainningManaging" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="TrainingDBModel.FK__Trainning__Cours__6C190EBB" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainingDBModel.FK__Trainning__Cours__6B24EA82" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainingDBModel.FK__Trainning__Topic__6D0D32F4" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainingDBModel.FK__Trainning__Train__6A30C649" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainingDBModel.FK__Trainning__Train__6E01572D" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainingDBModel.FK__Trainning__Train__693CA210" ManuallyRouted="false" />
+      <Diagram DiagramId="39a003546f5d4d7a870f31ae2a4996bc" Name="Diagram1">
+        <EntityTypeShape EntityType="TrainingDBModel.Course" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.Course_CourseCate" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.CourseCate" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.Topic" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.Trainee" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.Trainee_Course" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.Trainer" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.Trainer_Course_Topic" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.TrainingStaff" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainingDBModel.TrainingStaff_Trainee" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="TrainingDBModel.FK__Course_Co__Cours__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__Trainee_C__Cours__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__Trainer_C__Cours__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__Course_Co__Cours__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__Trainer_C__Topic__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__Trainee_C__Train__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__TrainingS__Train__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__Trainer_C__Train__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainingDBModel.FK__TrainingS__Train__75A278F5" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

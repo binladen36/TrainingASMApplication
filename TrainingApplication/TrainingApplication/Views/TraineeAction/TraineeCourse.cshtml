@@ -1,4 +1,4 @@
-﻿@model TrainingApplication.Models.Course
+﻿@model IEnumerable<TrainingApplication.Models.Trainee_Course>
 
 @{
     ViewBag.Title = "TraineeCourse";
@@ -7,37 +7,30 @@
 
 <h2>TraineeCourse</h2>
 
-<div>
-    <h4>Course</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseName)
-        </dd>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trainee.TraineeUserID)
+        </th>
+        <th></th>
+    </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseDescription)
-        </dt>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trainee.TraineeUserID)
+        </td>
+        <td>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseDescription)
-        </dd>
+        </td>
+    </tr>
+}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Credit)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Credit)
-        </dd>
-
-    </dl>
-</div>
-<p>
-     |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</table>

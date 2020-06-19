@@ -11,6 +11,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Course_CourseCate">
+      <EntityTypeMapping TypeName="TrainingDBModel.Course_CourseCate">
+        <MappingFragment StoreEntitySet="Course_CourseCate">
+          <ScalarProperty Name="CourseCourseCateID" ColumnName="CourseCourseCateID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="CourseCateID" ColumnName="CourseCateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CourseCates">
       <EntityTypeMapping TypeName="TrainingDBModel.CourseCate">
         <MappingFragment StoreEntitySet="CourseCate">
@@ -46,18 +55,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Trainee_Course">
+      <EntityTypeMapping TypeName="TrainingDBModel.Trainee_Course">
+        <MappingFragment StoreEntitySet="Trainee_Course">
+          <ScalarProperty Name="TraineeCourseID" ColumnName="TraineeCourseID" />
+          <ScalarProperty Name="TraineeID" ColumnName="TraineeID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Trainers">
       <EntityTypeMapping TypeName="TrainingDBModel.Trainer">
         <MappingFragment StoreEntitySet="Trainer">
-          <ScalarProperty Name="Internal" ColumnName="Internal" />
-          <ScalarProperty Name="External" ColumnName="External" />
           <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
           <ScalarProperty Name="TrainerUserID" ColumnName="TrainerUserID" />
           <ScalarProperty Name="TrainerName" ColumnName="TrainerName" />
+          <ScalarProperty Name="External" ColumnName="External" />
           <ScalarProperty Name="Education" ColumnName="Education" />
           <ScalarProperty Name="WorkingPlace" ColumnName="WorkingPlace" />
           <ScalarProperty Name="Telephone" ColumnName="Telephone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trainer_Course_Topic">
+      <EntityTypeMapping TypeName="TrainingDBModel.Trainer_Course_Topic">
+        <MappingFragment StoreEntitySet="Trainer_Course_Topic">
+          <ScalarProperty Name="TrainerCourseTopicID" ColumnName="TrainerCourseTopicID" />
+          <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -71,16 +98,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TrainningManagings">
-      <EntityTypeMapping TypeName="TrainingDBModel.TrainningManaging">
-        <MappingFragment StoreEntitySet="TrainningManaging">
-          <ScalarProperty Name="TrainingManagingID" ColumnName="TrainingManagingID" />
+    <EntitySetMapping Name="TrainingStaff_Trainee">
+      <EntityTypeMapping TypeName="TrainingDBModel.TrainingStaff_Trainee">
+        <MappingFragment StoreEntitySet="TrainingStaff_Trainee">
+          <ScalarProperty Name="TrainingStaffTraineeID" ColumnName="TrainingStaffTraineeID" />
           <ScalarProperty Name="TrainingStaffID" ColumnName="TrainingStaffID" />
           <ScalarProperty Name="TraineeID" ColumnName="TraineeID" />
-          <ScalarProperty Name="CourseCateID" ColumnName="CourseCateID" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
-          <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
